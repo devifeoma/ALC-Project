@@ -1,0 +1,232 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="/favicon.ico">
+			<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" href="./css/judith.css">
+	    <title>ALC</title>
+	</head>
+	<body>
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Student Information</a>
+					</div>
+
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+
+					</div>
+				</div>
+			</nav>
+
+
+
+		<div class="container" id="app">
+			<div class="row">
+				<div class="col-md-2">
+ 
+		<div class="row well admin-nav">
+		<!-- Trigger the modal with a button -->
+		 <!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+		   <h4 data-toggle="modal" data-target="#myModal"><a class="custom-close">Register</a></h4>
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Student Information</h4>
+		        </div>
+		        <div class="modal-body">
+		          <form role="form">
+				<div class="form-group">
+					<label for="">Name</label>
+					<input type="text" v-model="userData.name" class="form-control" id="" placeholder="Student Name">
+				</div>
+
+				<div class="form-group">
+					<label for="">Reg No</label>
+					<input type="tel" v-model="userData.regno" class="form-control" id="" placeholder="Reg No">
+				</div>
+
+				<div class="form-group">
+					<label for="">Department</label>
+					<input type="text" v-model="userData.department" class="form-control" id="" placeholder="Department">
+				</div>
+
+				<div class="form-group">
+					<label for="">Phone</label>
+					<input type="text" v-model="userData.phone" class="form-control" id="" placeholder="Phone">
+				</div>
+			
+				<div class="form-group">
+					<label for="">Age</label>
+					<input type="tel" v-model="userData.age" class="form-control" id="" placeholder="Age">
+				</div>
+			
+			</form>
+			<button type="button" class="btn btn-primary" Cclick="register">Submit</button>
+
+		        </div>
+		<!--         <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div> -->
+		      </div>
+		      
+		    </div>
+		  </div>		
+		</div>
+				</div>
+				<div class="col-md-10">
+					<table class="table">
+							<tr>
+								<th>Name</th>
+								<th>Reg No</th>
+								<th>Department</th>
+								<th>Phone</th>
+								<th>Age</th>
+
+
+							</tr>
+
+							<tr class="active" v-for="student in students">
+								<td>{{student.name}}</td>
+								<td>{{student.regno}}</td>
+								<td>{{student.department}}</td>
+								<td>{{student.phone}}</td>
+								<td>{{student.age}}</td>
+								<td>				  <!-- Trigger the modal with a button -->
+		 <!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+		   <h4  data-toggle="modal" data-target="#editModal" @click="selectStudent(student._id)"><a><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h4>
+		 
+		  </td>
+								<td> <!--  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+		   <h4 data-toggle="modal" data-target="#myFirstModal" @click="selectStudent(student._id)"><a><i class="fa fa-trash-o" aria-hidden="true"></i></a></h4>
+
+		  </td>
+							</tr>
+
+
+					</table>
+				</div>
+			</div>
+
+
+	 <!-- Modal -->
+	  <div class="modal fade" id="editModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Student Information</h4>
+	        </div>
+	        <div class="modal-body">
+	    <form role="form">
+				<div class="form-group">
+					<label for="">Name</label>
+					<input type="text" v-model="userData.name" class="form-control" id="" placeholder="Student Name">
+				</div>
+
+				<div class="form-group">
+					<label for="">Reg No</label>
+					<input type="tel" v-model="userData.regno" class="form-control" id="" placeholder="Reg No">
+				</div>
+
+				<div class="form-group">
+					<label for="">Department</label>
+					<input type="text" v-model="userData.department" class="form-control" id="" placeholder="Department">
+				</div>
+
+				<div class="form-group">
+					<label for="">Phone</label>
+					<input type="text" v-model="userData.phone" class="form-control" id="" placeholder="Phone">
+				</div>
+			
+				<div class="form-group">
+					<label for="">Age</label>
+					<input type="tel" v-model="userData.age" class="form-control" id="" placeholder="Age">
+				</div>
+			</form>
+			<button type="button" @click="register()" class="btn btn-primary">Submit</button>
+		</div>
+	<!--         <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div> -->
+	      </div>
+	      
+	    </div>
+	  </div>
+
+				
+	  <div class="modal fade" id="myFirstModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content modal-content">
+	        <div class="modal-header modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Are you sure you want to delete?</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<div class="row">
+	        		<div class="col-md-6">
+	        			<button class="btn btn-success form-control" @click="deleteStudent">Yes</button> 
+	        		</div>
+	        		<div class="col-md-6">
+	        			<button class="btn btn-danger form-control">No</button> 
+	        		</div>
+	        		
+	        	</div>
+	        </div>
+	<!--         <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div> -->
+	      </div>
+	      
+	    </div>
+	  </div>
+		  
+					</div>
+
+
+
+			
+		</div>
+		<script type="text/javascript">
+			$(function () {
+				$(".custom-close").on('click', function() {
+						$('#myModal').modal('hide');
+				});
+		});
+
+		$(function () {
+			$('#modal').modal('toggle');
+	 });
+		</script>
+
+	 		<!-- jQuery library -->
+	        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	        <!-- Latest compiled JavaScript -->
+	        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+					<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	    		<script src="https://unpkg.com/vue"></script>
+	    		<script src="js/new-vue.js"></script>
+	</body>
+	</html>
